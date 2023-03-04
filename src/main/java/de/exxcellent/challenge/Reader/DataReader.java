@@ -1,4 +1,4 @@
-package de.exxcellent.challenge;
+package de.exxcellent.challenge.Reader;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -10,7 +10,7 @@ public class DataReader {
 
     /**
      * Reads a file and puts its content into a list.
-     * @param {string} pathToFile Path to the file that needs to be read
+     * @param {string} pathToFile: Path to the file that needs to be read
      */
     public List<String[]> readData(String pathToFile) {
 
@@ -22,7 +22,6 @@ public class DataReader {
             while ((line = reader.readLine()) != null) {
                dataset.add(line.split(","));
             }
-
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Something went wrong while reading the file");

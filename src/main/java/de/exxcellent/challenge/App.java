@@ -1,4 +1,5 @@
 package de.exxcellent.challenge;
+import de.exxcellent.challenge.DataCleaner.DataCleaner;
 import de.exxcellent.challenge.Reader.DataReader;
 
 import java.util.List;
@@ -19,7 +20,10 @@ public final class App {
 
         // Your preparation code …
         DataReader reader = new DataReader();
-        reader.readData("src/main/resources/de/exxcellent/challenge/weather.csv");
+        List<String[]> weatherData = reader.readData("src/main/resources/de/exxcellent/challenge/weather.csv");
+
+        DataCleaner cleaner = new DataCleaner();
+        cleaner.cleanWeatherData(weatherData, 3);
 
         String dayWithSmallestTempSpread = "Someday";     // Your day analysis function call …
         System.out.printf("Day with smallest temperature spread : %s%n", dayWithSmallestTempSpread);

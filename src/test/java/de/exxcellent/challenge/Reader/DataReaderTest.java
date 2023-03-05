@@ -1,6 +1,5 @@
 package de.exxcellent.challenge.Reader;
 
-import de.exxcellent.challenge.Reader.DataReader;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

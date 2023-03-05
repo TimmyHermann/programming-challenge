@@ -14,8 +14,8 @@ class DataCleanerTest {
         DataCleaner cleaner = new DataCleaner();
         DataReader reader = new DataReader();
         List<String[]> weatherData = reader.readData("src/main/resources/de/exxcellent/challenge/weather.csv");
-        List<String[]> cleanData = cleaner.cleanWeatherData(weatherData,3);
-        for (String[] row : cleanData) {
+        List<String[]> cleanWeatherData = cleaner.cleanWeatherData(weatherData,3);
+        for (String[] row : cleanWeatherData) {
             assertEquals(3, row.length);
         }
     }
@@ -30,8 +30,8 @@ class DataCleanerTest {
         DataCleaner cleaner = new DataCleaner();
         DataReader reader = new DataReader();
         List<String[]> weatherData = reader.readData("src/main/resources/de/exxcellent/challenge/weather.csv");
-        List<String[]> cleanData = cleaner.cleanWeatherData(weatherData,3);
-        for (String[] col : cleanData) {
+        List<String[]> cleanWeatherData = cleaner.cleanWeatherData(weatherData,3);
+        for (String[] col : cleanWeatherData) {
             firstCol= col[0];
             secondCol= col[1];
             thirdCol= col[2];
@@ -41,5 +41,29 @@ class DataCleanerTest {
         assertEquals("Day",firstCol);
         assertEquals("MxT",secondCol);
         assertEquals("MnT",thirdCol);
+    }
+
+    @Test
+    public void footballDataCleanerShouldReturnListWithJustThreeSpecificColumns(){
+        String firstCol="";
+        String secondCol="";
+        String thirdCol="";
+
+        DataCleaner cleaner = new DataCleaner();
+        DataReader reader = new DataReader();
+        List<String[]> footballData = reader.readData("src/main/resources/de/exxcellent/challenge/football.csv");
+        List<String[]> cleanFootballData = cleaner.cleanFootballData(footballData, 0, 5,6);
+
+        for (String[] col : cleanFootballData) {
+            firstCol= col[0];
+            secondCol= col[1];
+            thirdCol= col[2];
+            // This break is necessary, because only one iteration is needed
+            break;
+        }
+        assertEquals("Team",firstCol);
+        assertEquals("Goals",secondCol);
+        assertEquals("Goals Allowed",thirdCol);
+
     }
 }

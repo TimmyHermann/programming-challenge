@@ -20,8 +20,25 @@ class SpreadCalculatorTest {
 
         DataCleaner cleaner = new DataCleaner();
         List<String[]> cleanedWeatherData = cleaner.cleanWeatherData(weatherData, 3);
+
         SpreadCalculator calculateSpread = new SpreadCalculator();
         assertEquals(dayWithMinSpread,calculateSpread.calculateMinimalSpread(cleanedWeatherData));
+    }
+
+    @Test
+    public void calculatedMinimalSpreadForFootballData(){
+        String teamWithMinSpread="Leicester";
+
+        DataReader reader = new DataReader();
+        List<String[]> footballData = reader.readData("src/main/resources/de/exxcellent/challenge/football.csv");
+
+        DataCleaner cleaner = new DataCleaner();
+        List<String[]> cleanedFootballData = cleaner.cleanFootballData(footballData, 0,5,6);
+
+        SpreadCalculator calculateSpread = new SpreadCalculator();
+        assertEquals(teamWithMinSpread,calculateSpread.calculateMinimalSpread(cleanedFootballData));
+
+
     }
 
 }

@@ -27,7 +27,7 @@ class SpreadCalculatorTest {
 
     @Test
     public void calculatedMinimalSpreadForFootballData(){
-        String teamWithMinSpread="Leicester";
+        String teamWithMinSpread="Aston_Villa";
 
         DataReader reader = new DataReader();
         List<String[]> footballData = reader.readData("src/main/resources/de/exxcellent/challenge/football.csv");

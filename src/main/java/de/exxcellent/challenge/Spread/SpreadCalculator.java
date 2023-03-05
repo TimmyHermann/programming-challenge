@@ -25,6 +25,8 @@ public class SpreadCalculator {
             float max = Float.parseFloat(rows[1]);
             float min = Float.parseFloat(rows[2]);
             float spread = max-min;
+            // It is necessary to get the amount, because with football data negative values are possible
+            spread = Math.abs(spread);
 
             // set the first day and spread as a baseline
             if(dayOfMinSpread == "" && minSpread==0){
@@ -34,7 +36,7 @@ public class SpreadCalculator {
 
             if(spread < minSpread){
                dayOfMinSpread=day;
-                minSpread=spread;
+               minSpread=spread;
             }
 
         }

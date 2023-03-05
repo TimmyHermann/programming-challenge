@@ -1,6 +1,7 @@
 package de.exxcellent.challenge;
 import de.exxcellent.challenge.DataCleaner.DataCleaner;
 import de.exxcellent.challenge.Reader.DataReader;
+import de.exxcellent.challenge.Spread.SpreadCalculator;
 
 import java.util.List;
 
@@ -23,9 +24,13 @@ public final class App {
         List<String[]> weatherData = reader.readData("src/main/resources/de/exxcellent/challenge/weather.csv");
 
         DataCleaner cleaner = new DataCleaner();
-        cleaner.cleanWeatherData(weatherData, 3);
+        List<String[]> cleanedWeatherData = cleaner.cleanWeatherData(weatherData, 3);
 
-        String dayWithSmallestTempSpread = "Someday";     // Your day analysis function call …
+        SpreadCalculator calculateSpread = new SpreadCalculator();
+        String dayWithMinimalSpread = calculateSpread.calculateMinimalSpread(cleanedWeatherData);
+
+
+        String dayWithSmallestTempSpread = dayWithMinimalSpread;     // Your day analysis function call …
         System.out.printf("Day with smallest temperature spread : %s%n", dayWithSmallestTempSpread);
 
         String teamWithSmallestGoalSpread = "A good team"; // Your goal analysis function call …

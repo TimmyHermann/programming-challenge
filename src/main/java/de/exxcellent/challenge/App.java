@@ -19,19 +19,22 @@ public final class App {
      */
     public static void main(String... args) {
 
-        // Your preparation code …
+        // read the data
         DataReader reader = new DataReader();
         List<String[]> weatherData = reader.readData("src/main/resources/de/exxcellent/challenge/weather.csv");
         List<String[]> footballData = reader.readData("src/main/resources/de/exxcellent/challenge/football.csv");
 
+        // clean the data
         DataCleaner cleaner = new DataCleaner();
-        List<String[]> cleanedWeatherData = cleaner.cleanWeatherData(weatherData, 3);
-        List<String[]> cleanedFootballData = cleaner.cleanFootballData(footballData, 0,5,6);
+        List<String[]> cleanedWeatherData = cleaner.dataCleaner(weatherData, 0,1,2);
+        List<String[]> cleanedFootballData = cleaner.dataCleaner(footballData, 0,5,6);
 
+        // calculate spread
         SpreadCalculator calculateSpread = new SpreadCalculator();
         String dayWithMinimalSpread = calculateSpread.calculateMinimalSpread(cleanedWeatherData);
         String teamWithMinimalSpread = calculateSpread.calculateMinimalSpread(cleanedFootballData);
 
+        // output
         String dayWithSmallestTempSpread = dayWithMinimalSpread;     // Your day analysis function call …
         System.out.printf("Day with smallest temperature spread : %s%n", dayWithSmallestTempSpread);
 

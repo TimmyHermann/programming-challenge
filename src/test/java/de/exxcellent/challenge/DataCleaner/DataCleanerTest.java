@@ -14,7 +14,7 @@ class DataCleanerTest {
         DataCleaner cleaner = new DataCleaner();
         DataReader reader = new DataReader();
         List<String[]> weatherData = reader.readData("src/main/resources/de/exxcellent/challenge/weather.csv");
-        List<String[]> cleanWeatherData = cleaner.cleanWeatherData(weatherData,3);
+        List<String[]> cleanWeatherData = cleaner.dataCleaner(weatherData,0,1,2);
         for (String[] row : cleanWeatherData) {
             assertEquals(3, row.length);
         }
@@ -30,7 +30,7 @@ class DataCleanerTest {
         DataCleaner cleaner = new DataCleaner();
         DataReader reader = new DataReader();
         List<String[]> weatherData = reader.readData("src/main/resources/de/exxcellent/challenge/weather.csv");
-        List<String[]> cleanWeatherData = cleaner.cleanWeatherData(weatherData,3);
+        List<String[]> cleanWeatherData = cleaner.dataCleaner(weatherData,0,1,2);
         for (String[] col : cleanWeatherData) {
             firstCol= col[0];
             secondCol= col[1];
@@ -52,7 +52,7 @@ class DataCleanerTest {
         DataCleaner cleaner = new DataCleaner();
         DataReader reader = new DataReader();
         List<String[]> footballData = reader.readData("src/main/resources/de/exxcellent/challenge/football.csv");
-        List<String[]> cleanFootballData = cleaner.cleanFootballData(footballData, 0, 5,6);
+        List<String[]> cleanFootballData = cleaner.dataCleaner(footballData, 0, 5,6);
 
         for (String[] col : cleanFootballData) {
             firstCol= col[0];

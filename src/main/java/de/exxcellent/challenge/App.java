@@ -19,10 +19,14 @@ public final class App {
      */
     public static void main(String... args) {
 
+        // paths to the data files
+        String weatherDataPath = "src/main/resources/de/exxcellent/challenge/weather.csv";
+        String footballDataPath = "src/main/resources/de/exxcellent/challenge/football.csv";
+
         // read the data
         DataReader reader = new DataReader();
-        List<String[]> weatherData = reader.readData("src/main/resources/de/exxcellent/challenge/weather.csv");
-        List<String[]> footballData = reader.readData("src/main/resources/de/exxcellent/challenge/football.csv");
+        List<String[]> weatherData = reader.readData(weatherDataPath);
+        List<String[]> footballData = reader.readData(footballDataPath);
 
         // clean the data
         DataCleaner cleaner = new DataCleaner();

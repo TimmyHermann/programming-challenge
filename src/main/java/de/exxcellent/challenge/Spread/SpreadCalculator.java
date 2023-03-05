@@ -4,9 +4,9 @@ import java.util.List;
 
 public class SpreadCalculator {
     /**
-     * Calculates the minimal spread for a day (Column 0) from max. (Column 1) and min. (Column 2) value
-     * @param cleanedWeatherData: the data taht needs to be read
-     * @return the day with the minimal temperature spread
+     * Calculates the minimal spread for a identifier (Column 0) between a max. (Column 1) and min. (Column 2) value
+     * @param cleanedWeatherData: the data that needs to be read
+     * @return the identifier with the minimal spread
      */
     public String calculateMinimalSpread(List<String[]> cleanedWeatherData){
         float minSpread=0;
@@ -25,6 +25,7 @@ public class SpreadCalculator {
             float max = Float.parseFloat(rows[1]);
             float min = Float.parseFloat(rows[2]);
             float spread = max-min;
+
             // It is necessary to get the amount, because with football data negative values are possible
             spread = Math.abs(spread);
 

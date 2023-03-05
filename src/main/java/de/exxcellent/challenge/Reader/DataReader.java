@@ -10,7 +10,8 @@ public class DataReader {
 
     /**
      * Reads a file and puts its content into a list.
-     * @param {string} pathToFile: Path to the file that needs to be read
+     * @param pathToFile: Path to the file that needs to be read
+     * @return dataset: returns the data as a List<String[]>
      */
     public List<String[]> readData(String pathToFile) {
 

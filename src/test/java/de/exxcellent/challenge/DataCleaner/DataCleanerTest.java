@@ -13,8 +13,10 @@ class DataCleanerTest {
     public void DataCleanerShouldReturnListWithJustThreeColumns(){
         DataCleaner cleaner = new DataCleaner();
         DataReader reader = new DataReader();
+
         List<String[]> weatherData = reader.readData("src/main/resources/de/exxcellent/challenge/weather.csv");
         List<String[]> cleanWeatherData = cleaner.dataCleaner(weatherData,0,1,2);
+
         for (String[] row : cleanWeatherData) {
             assertEquals(3, row.length);
         }
@@ -29,8 +31,10 @@ class DataCleanerTest {
 
         DataCleaner cleaner = new DataCleaner();
         DataReader reader = new DataReader();
+
         List<String[]> weatherData = reader.readData("src/main/resources/de/exxcellent/challenge/weather.csv");
         List<String[]> cleanWeatherData = cleaner.dataCleaner(weatherData,0,1,2);
+
         for (String[] col : cleanWeatherData) {
             firstCol= col[0];
             secondCol= col[1];
